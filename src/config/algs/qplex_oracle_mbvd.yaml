@@ -1,0 +1,66 @@
+# --- QPLEX+EIFB specific parameters ---
+
+action_selector: "epsilon_greedy"
+epsilon_start: 1.0
+epsilon_finish: 0.05
+epsilon_anneal_time: 50000
+epsilon_decay: "linear"
+
+runner: "episode"
+
+buffer_size: 5000
+
+# update the target network every {} episodes
+target_update_interval: 200
+
+# use the Q_Learner to train
+agent_output_type: "q"
+agent: "rnn_sd"
+learner: "qplex_oracle"
+double_q: True
+mixer: "dmaq"
+mixing_embed_dim: 32
+
+adv_hypernet_layers: 1
+adv_hypernet_embed: 64
+adv_hypernet_embed2: 64
+hypernet_embed: 64
+hypernet_embed2: 64
+
+num_kernel: 4
+is_minus_one: True
+weighted_head: True
+is_adv_attention: True
+is_stop_gradient: True
+
+burn_in_period: 100
+
+sd_route: False
+
+hidden_dim: 128
+agent_latent_dim: 16
+action_embedding_dim: 4
+prior_alpha: 0.7
+kl_balance: True
+k_step: 1
+rollout_depth: 3
+kl_regular: False
+
+# Variations of Imagination
+rollout_random_scale: 0
+img_greedy: True
+data_save_interval: 0
+validation: False
+img_w: 3
+z_log_interval: 0
+
+# EIFB
+mbvd_beta: 1.
+mbvd_beta2: 0.
+rew_beta: 1.3
+reg_beta: 1.
+reg_e: 0.
+use_combiner: True
+combiner_regular: True
+
+name: "qplex_oracle"

@@ -1,0 +1,50 @@
+# --- QMIX+EIFB specific parameters ---
+
+action_selector: "epsilon_greedy"
+epsilon_start: 1.0
+epsilon_finish: 0.05
+epsilon_anneal_time: 50000
+epsilon_decay: "linear"
+
+buffer_size: 5000
+
+# update the target network every {} episodes
+target_update_interval: 200
+
+# use the Q_Learner to train
+agent_output_type: "q"
+learner: "oracle_mbvd_learner"
+double_q: True
+mixer: "qmix"
+
+hypernet_layers: 2
+hypernet_embed: 64
+mixing_embed_dim: 32
+
+hidden_dim: 128
+agent_latent_dim: 16
+action_embedding_dim: 4
+prior_alpha: 0.7
+rollout_depth: 3
+k_step: 1
+kl_balance: True
+kl_regular: False
+
+# Variations of Imagination
+rollout_random_scale: 0
+img_greedy: True
+data_save_interval: 0
+validation: False
+img_w: 3
+z_log_interval: 0
+
+# EIFB
+mbvd_beta: 1.
+mbvd_beta2: 0.
+rew_beta: 1.3
+reg_beta: 1.
+reg_e: 0.
+use_combiner: True
+combiner_regular: True
+
+name: "oracle_mbvd"
